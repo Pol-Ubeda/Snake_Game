@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class Snake {
-	public int len = 1;
+	public int len = 2;
 	public ArrayList<ArrayList<Integer>> squares = new ArrayList<>();	
 	public ArrayList<Integer> newFirst = new ArrayList<>();
 		
@@ -17,6 +17,11 @@ public class Snake {
 		center.add(7);
 		center.add(7);	
 		squares.add(center);
+		
+		ArrayList<Integer> center2 = new ArrayList<>();
+		center2.add(6);
+		center2.add(7);	
+		squares.add(center2);
 		
 		newFirst.add(7);
 		newFirst.add(7);
@@ -34,29 +39,29 @@ public class Snake {
 		
 		firstX = squares.get(0).get(0);
 		firstY = squares.get(0).get(1);
-		newFirst.add(firstX);
-		newFirst.add(firstY);
+		newFirst.set(0, firstX);
+		newFirst.set(1, firstY);
 		
 		
-		for(int i = 1; i<len; i++) {
+		for(int i = len - 1; i > 0; i--) {
 			squares.set(i, squares.get(i-1));
 		}
 		System.out.println(Keys.pressed);
 		if(Keys.pressed == "UP") {
 			newFirst.set(1, newFirst.get(1) - 1);
-			squares.set(0, newFirst);
+			squares.set(0, new ArrayList<>(newFirst));
 		}
 		if(Keys.pressed == "DOWN") {
 			newFirst.set(1,  newFirst.get(1) + 1);
-			squares.set(0,  newFirst);
+			squares.set(0, new ArrayList<>(newFirst));
 		}
 		if(Keys.pressed == "LEFT") {
 			newFirst.set(0,  newFirst.get(0) - 1);
-			squares.set(0,  newFirst);
+			squares.set(0, new ArrayList<>(newFirst));
 		}
 		if(Keys.pressed == "RIGHT") {
 			newFirst.set(0,  newFirst.get(0) + 1);
-			squares.set(0,  newFirst);
+			squares.set(0, new ArrayList<>(newFirst));
 		}
 	}
 	

@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 
 public class Apple {
-	ArrayList<Integer> position = new ArrayList<>();
+	public ArrayList<Integer> position = new ArrayList<>();
 	
 	public Apple(int col, int row) {
 		position.add(col);
