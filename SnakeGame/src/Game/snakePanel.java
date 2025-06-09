@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class snakePanel extends JPanel implements Runnable{
-	final int FPS = 2;
+	final int FPS = 5;
 	public static final int MAX_COL = 20;
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 800;
@@ -138,13 +138,12 @@ public class snakePanel extends JPanel implements Runnable{
 		if(snake.squares.get(0).get(0) == apple.position.get(0) &&
 				snake.squares.get(0).get(1) == apple.position.get(1)) {
 			
-			ArrayList<Integer> lastItem = new ArrayList<>();
-			lastItem.add(snake.squares.get(0).get(0));
-			lastItem.add(snake.squares.get(0).get(1));
+			snake.newFirst.set(0,  snake.squares.get(0).get(0));
+			snake.newFirst.set(1,  snake.squares.get(0).get(1));			
 			
 			snake.len++;
-			snake.squares.add(lastItem);
-			snake.updateSnake();
+			snake.squares.add(new ArrayList<>(snake.newFirst));
+			//snake.updateSnake();
 			
 			return true;
 		}
